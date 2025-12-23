@@ -3,11 +3,6 @@ import requests
 import os
 import random
 
-import openmeteo_requests
-import requests_cache
-from retry_requests import retry
-
-
 app = Flask(__name__)
 # cache_session = requests_cache.CachedSession('.cache', expire_after = 3600)
 # retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
