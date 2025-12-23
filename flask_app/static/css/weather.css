@@ -1,0 +1,589 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #0a0e14;
+    color: #4fc3f7;
+    overflow: hidden;
+}
+
+/* Top info bar */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 25, 35, 0.92);
+    border-bottom: 3px solid #3a5f7d;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.3);
+}
+
+.location-info h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    color: #64b5f6;
+    letter-spacing: 2px;
+    margin-bottom: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#lastUpdate {
+    font-size: 0.7rem;
+    color: #81c784;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.time-display {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    color: #4fc3f7;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(79, 195, 247, 0.6);
+}
+
+/* Main container - fixed, no scroll */
+.main-container {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    right: 20px;
+    bottom: 180px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Current weather panel - left */
+.current-weather {
+    background: rgba(15, 25, 35, 0.92);
+    border: 3px solid #3a5f7d;
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.weather-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(79, 195, 247, 0.4));
+}
+
+.current-info {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.current-temp {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: #4fc3f7;
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(79, 195, 247, 0.6);
+}
+
+.unit {
+    font-size: 2.5rem;
+    color: #64b5f6;
+}
+
+.current-desc {
+    font-size: 1rem;
+    color: #81c784;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.current-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    padding-top: 20px;
+    border-top: 2px solid #3a5f7d;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-label {
+    font-size: 0.75rem;
+    color: #81c784;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.detail-value {
+    font-size: 1.3rem;
+    color: #4fc3f7;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+/* Marine panel - right */
+.marine-panel {
+    background: rgba(15, 25, 35, 0.92);
+    border: 3px solid #3a5f7d;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.marine-panel h3 {
+    font-size: 0.9rem;
+    color: #64b5f6;
+    border-bottom: 2px solid #3a5f7d;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.marine-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    flex: 1;
+}
+
+.marine-item {
+    background: rgba(58, 95, 125, 0.2);
+    border: 2px solid #3a5f7d;
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.marine-label {
+    font-size: 0.7rem;
+    color: #81c784;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.marine-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.5rem;
+    color: #4fc3f7;
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1;
+    text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
+}
+
+.marine-sub {
+    font-size: 0.75rem;
+    color: #64b5f6;
+    letter-spacing: 1px;
+}
+
+/* Bottom forecast bar */
+.forecast-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 25, 35, 0.92);
+    border-top: 3px solid #3a5f7d;
+    padding: 18px 30px;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.3);
+}
+
+.forecast-bar h3 {
+    font-size: 0.85rem;
+    color: #64b5f6;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+}
+
+.forecast-item {
+    text-align: center;
+    padding: 10px;
+    background: rgba(58, 95, 125, 0.2);
+    border: 2px solid #3a5f7d;
+    border-radius: 6px;
+}
+
+.forecast-day {
+    font-size: 0.65rem;
+    color: #81c784;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.forecast-icon {
+    font-size: 2rem;
+    margin: 8px 0;
+    filter: drop-shadow(0 0 5px rgba(79, 195, 247, 0.3));
+}
+
+.forecast-temp {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    color: #4fc3f7;
+    font-weight: 600;
+}
+
+.forecast-temp-low {
+    font-size: 0.8rem;
+    color: #64b5f6;
+    margin-top: 3px;
+}
+
+/* Scan line effect */
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #4fc3f7, transparent);
+    animation: scan 3s linear infinite;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+/* Status indicator animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background: #1a1a1a;
+    color: #e8dcc4;
+    overflow: hidden;
+}
+
+/* Top info bar */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #2a2a2a;
+    border-bottom: 2px solid #444;
+    padding: 12px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.location-info h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.3rem;
+    color: #ddd;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+#lastUpdate {
+    font-size: 0.65rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.time-display {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.8rem;
+    color: #ddd;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* Main container - single column layout */
+.main-container {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    bottom: 180px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Current weather - horizontal layout */
+.current-weather {
+    background: #2a2a2a;
+    border: 2px solid #444;
+    padding: 25px 35px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.weather-icon {
+    font-size: 4.5rem;
+}
+
+.current-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.current-temp {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+
+.unit {
+    font-size: 2.5rem;
+    color: #999;
+}
+
+.current-desc {
+    font-size: 1.1rem;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.current-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 30px;
+    border-left: 2px solid #444;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.detail-label {
+    font-size: 0.7rem;
+    color: #999;
+    letter-spacing: 1px;
+    min-width: 80px;
+}
+
+.detail-value {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Rajdhani', sans-serif;
+    text-align: right;
+}
+
+/* Marine panel - grid layout */
+.marine-panel {
+    background: #2a2a2a;
+    border: 2px solid #444;
+    padding: 25px;
+}
+
+.marine-panel h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    color: #ddd;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #444;
+    font-weight: 600;
+}
+
+.marine-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.marine-item {
+    background: #1a1a1a;
+    border: 1px solid #444;
+    padding: 18px;
+    text-align: center;
+}
+
+.marine-label {
+    font-size: 0.65rem;
+    color: #999;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.marine-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+.marine-sub {
+    font-size: 0.75rem;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+/* Bottom forecast bar */
+.forecast-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #2a2a2a;
+    border-top: 2px solid #444;
+    padding: 18px 25px;
+    z-index: 1000;
+}
+
+.forecast-bar h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.8rem;
+    color: #ddd;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+}
+
+.forecast-item {
+    text-align: center;
+    padding: 10px;
+    background: #1a1a1a;
+    border: 1px solid #444;
+}
+
+.forecast-day {
+    font-size: 0.65rem;
+    color: #999;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.forecast-icon {
+    font-size: 1.8rem;
+    margin: 8px 0;
+}
+
+.forecast-temp {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.forecast-temp-low {
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 3px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1200px) {
+    .current-weather {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .current-details {
+        border-left: none;
+        border-top: 2px solid #444;
+        padding-left: 0;
+        padding-top: 15px;
+    }
+
+    .marine-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        bottom: 220px;
+    }
+
+    .forecast-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .marine-grid {
+        grid-template-columns: 1fr;
+    }
+}

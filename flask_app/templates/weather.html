@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEATHER</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/weather.css') }}">
+</head>
+
+<body>
+    <!-- Top info bar -->
+    <div class="top-bar">
+        <div class="scan-line"></div>
+        <div class="location-info">
+            <h2 id="locationName">LOADING...</h2>
+            <div id="lastUpdate">---</div>
+        </div>
+        <div class="time-display">
+            <div id="currentTime">--:--:--</div>
+        </div>
+    </div>
+
+    <!-- Main weather display -->
+    <div class="main-container">
+        <!-- Current conditions - left panel -->
+        <div class="current-weather">
+            <div class="scan-line"></div>
+            <div class="weather-icon" id="weatherIcon">☁️</div>
+
+            <div class="current-info">
+                <div class="current-temp">
+                    <span id="currentTemp">--</span><span class="unit">°F</span>
+                </div>
+                <div class="current-desc" id="weatherDesc">---</div>
+            </div>
+
+            <div class="current-details">
+                <div class="detail-item">
+                    <span class="detail-label">FEELS LIKE</span>
+                    <span class="detail-value" id="feelsLike">--°F</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">HUMIDITY</span>
+                    <span class="detail-value" id="humidity">--%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">PRECIP</span>
+                    <span class="detail-value" id="precipitation">--"</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marine conditions - right panel -->
+        <div class="marine-panel">
+            <div class="scan-line"></div>
+            <h3>MARINE CONDITIONS</h3>
+
+            <div class="marine-grid">
+                <div class="marine-item">
+                    <span class="marine-label">WIND SPEED</span>
+                    <div class="marine-value" id="windSpeed">--</div>
+                    <div class="marine-sub" id="windDir">---</div>
+                </div>
+
+                <div class="marine-item">
+                    <span class="marine-label">GUSTS</span>
+                    <div class="marine-value" id="windGusts">--</div>
+                    <div class="marine-sub">KTS</div>
+                </div>
+
+                <div class="marine-item">
+                    <span class="marine-label">WAVE HEIGHT</span>
+                    <div class="marine-value" id="waveHeight">--</div>
+                    <div class="marine-sub" id="waveDir">---</div>
+                </div>
+
+                <div class="marine-item">
+                    <span class="marine-label">WAVE PERIOD</span>
+                    <div class="marine-value" id="wavePeriod">--</div>
+                    <div class="marine-sub">SEC</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom forecast bar -->
+    <div class="forecast-bar">
+        <div class="scan-line"></div>
+        <h3>7-DAY FORECAST</h3>
+        <div class="forecast-grid" id="forecastGrid">
+            <!-- Forecast items will be inserted here -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/weather.js') }}"></script>
+</body>
+
+</html>
